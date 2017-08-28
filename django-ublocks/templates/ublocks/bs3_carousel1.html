@@ -1,0 +1,48 @@
+{% load static fb_versions %}
+<section class="ublocks_carousel1">
+  <!-- {{ ublock.setname.name }} -->
+  <div id="carousel_{{ ublock.cache_key }}" class="carousel slide" data-interval="{{ ublock.style.config_int_01|default:5000 }}" data-pause="hover">
+
+    {% if ublock.style.config_bool_01 %}
+    <!-- Carousel indicators -->
+    <ol class="carousel-indicators">
+      {% for item in ublock.setname.items.all %}
+      <li data-target="#carousel_{{ ublock.cache_key }}" data-slide-to="{{ forloop.counter0 }}"{% if forloop.first %} class="active"{% endif %}></li>
+      {% endfor %}
+    </ol>
+    {% endif %}
+
+    <!-- Carousel items -->
+    <div class="carousel-inner" role="listbox">
+      {% for item in ublock.setname.items.all %}
+      <div class="item{% if forloop.first %} active{% endif %}">
+        <a href="{{ item.url }}"><img src="{% version item.local_file "fixed_big" %}" alt="{{ item.title }}"></a>
+        <div class="container">
+          <div class="carousel-caption">
+            <a href="{{ item.url }}">
+            <h2>{{ item.title }}</h2>
+            <p class="subtitulo">{{ item.subtitle }}</p>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <!-- Carousel nav -->
+    <a class="left carousel-control" href="#carousel_{{ ublock.cache_key }}" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control right" href="#carousel_{{ ublock.cache_key }}" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+  <script>
+    $(document).ready(function () {
+      $('#carousel_{{ ublock.cache_key }}').carousel({
+        interval: {{ ublock.style.config_int_01|default:5000 }}
+      })
+    });
+  </script>
+</section>

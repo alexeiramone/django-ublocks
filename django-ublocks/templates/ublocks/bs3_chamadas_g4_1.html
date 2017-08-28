@@ -1,0 +1,21 @@
+{% load static fb_versions %}
+<section id="chamadas_g4_1_{{ ublock.cache_key }}" class="ublocks_chamadas_g4_1">
+  <!-- {{ ublock.setname.name }} -->
+  <div class="row">
+    {% for item in ublock.setname.items.all %}
+    <div class="col-sm-4">
+      <div class="row">
+        <div class="col-xs-5 col-sm-12">
+          <a href="{{ item.url }}"><img src="{% version item.local_file "fixed_big" %}" alt="{{ item.title }}" class="img-responsive"></a>
+        </div>
+        <div class="col-sx-7 col-sm-12">
+          <a href="{{ item.url }}">
+          <h2>{{ item.title }}</h2>
+          <p class="subtitulo">{{ item.subtitle }}</p>
+          </a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
