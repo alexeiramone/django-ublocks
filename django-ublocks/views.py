@@ -1,3 +1,9 @@
-# from django.shortcuts import render
+# -*- coding: utf-8 -*-
+from django.shortcuts import render
 
-# Create your views here.
+from .models import Block
+
+def test(request, ublock):
+    context = {}
+    context['ublock'] = Block.objects.get(id=ublock)
+    return render(request,'ublocks_test_base.html',context)

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
 from django import forms
+from django.core.urlresolvers import reverse
 
 from filebrowser.fields import FileBrowseField
 from amdb.core.validators import validate_filebrowser_original
@@ -42,8 +43,13 @@ admin.site.register(Item,ItemAdmin)
 
 
 class BlockAdmin(admin.ModelAdmin):
-    list_display = ('id',)
+    list_display = ('id','item','template','ublocks_actions')
 
+    def ublocks_actions(self, obj):
+        ublocks_actions_string = u'<a href="{}">{}</a>'.format(reverse('ublocks_test',kwargs=dict(ublock=obj.id)),'Test')
+        return ublocks_actions_string
+    ublocks_actions.allow_tags = True
+    ublocks_actions.short_description = 'Actions'
 
 admin.site.register(Block,BlockAdmin)
 
