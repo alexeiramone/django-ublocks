@@ -15,7 +15,12 @@ Standarized HTML blocks paired with a common model instance. Easy way to create 
 
 ## TODO
 
-- Use better classifiers in `setup.py`
+- Resolve Dash issue in the folder (can't import properly)
+- Template Importer/parser (choices feeder)
 - Fix templates
+- Better GET Queries in views and templatetags
+- Better TinyMCE Configuration
+- Decision: forms versus TinyMCE (hidden and unstyled elements)
 - Remove old project's garbage
 - Routes and Middleware
+- Use better classifiers in `setup.py`

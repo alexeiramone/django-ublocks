@@ -1,8 +1,13 @@
 {% extends "ublocks_base.html" %}
 
 {% block 'content' %}
-	<!-- {{ ublock.template }} -->
-	{% include ublock.html_template %}
+	{% if mode == 'templatetag' %}
+		{% load ublock from ublock_tags %}
+		{% ublock id=ublock_id %}
+	{% else %}
+		<!-- {{ ublock.template }} -->
+		{% include ublock.html_template %}
+	{% endif %}
 {% endblock 'content' %}
 
 {% block "tinymce_config" %}

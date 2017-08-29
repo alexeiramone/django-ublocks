@@ -46,7 +46,8 @@ class BlockAdmin(admin.ModelAdmin):
     list_display = ('id','item','template','ublocks_actions')
 
     def ublocks_actions(self, obj):
-        ublocks_actions_string = u'<a href="{}">{}</a>'.format(reverse('ublocks_test',kwargs=dict(ublock=obj.id)),'Test')
+        ublocks_actions_string = u'<a href="{}">{}</a>'.format(reverse('ublocks_test',kwargs=dict(ublock=obj.id)),'[Test IN]')
+        ublocks_actions_string = u'{} <a href="{}?mode=templatetag">{}</a>'.format(ublocks_actions_string,reverse('ublocks_test',kwargs=dict(ublock=obj.id)),'[Test TT]')
         return ublocks_actions_string
     ublocks_actions.allow_tags = True
     ublocks_actions.short_description = 'Actions'
