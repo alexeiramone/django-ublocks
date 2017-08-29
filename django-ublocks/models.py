@@ -7,7 +7,7 @@ from .mixins import AutomaticDatesMixin
 # from filebrowser.fields import FileBrowseField
 
 TEMPLATES_CHOICES = (
-    ('ublocks/bs3_jumbotron1.html','BS3 :: Jumbotron 01'),
+    ('bs3_jumbotron1','BS3 | Jumbotron 01'),
     # ('',''),
 )
 
@@ -55,3 +55,6 @@ class Block(AutomaticDatesMixin):
     def __unicode__(self):
         return u'Block'
         # return u'P{!r}:ID{}'.format(self.order,self.id)
+
+    def html_template(self):
+        return u'ublocks/{}.html'.format(self.template)

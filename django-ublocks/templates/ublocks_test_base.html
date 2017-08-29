@@ -2,5 +2,20 @@
 
 {% block 'content' %}
 	<!-- {{ ublock.template }} -->
-	{% include ublock.template %}
+	{% include ublock.html_template %}
 {% endblock 'content' %}
+
+{% block "tinymce_config" %}
+<script>
+	tinymce.init({ selector:'h1', theme:"inlite", inline:true });
+	tinymce.init({ selector:'.ublock_text_wrapper', inline:true });
+	tinymce.init({ selector:'p>a',theme:"inlite", inline:true });
+
+	binds = {title:'h1', subtitle:'a'}
+	// binds tests - https://codepen.io/alexeiramone/pen/ZJqqQr
+</script>
+<style>
+	.mce-content-body {}
+	.mce-edit-focus {outline:2px solid #36F;}
+</style>
+{% endblock "tinymce_config" %}
