@@ -30,7 +30,8 @@
 		context:1,
 		bindings: [
 			{element:'title', selector:'h1', tinymce:tinyMCE_inlite},
-			{element:'subtitle', selector:'p:first', tinymce:tinyMCE_inline}
+			{element:'text', selector:'p:first', tinymce:tinyMCE_inline},
+			{element:'subtitle', selector:'p:last>a', tinymce:tinyMCE_inlite}
 		]
 		}
 	];
@@ -43,10 +44,10 @@ for (var i = uBlocks.length - 1; i >= 0; i--) {
 	
 		
 }
-
+// https://vitalets.github.io/x-editable/
 </script>
 <style>
-	.mce-content-body {}
+	.mce-content-body {outline:2px dotted #ccc;}
 	.mce-edit-focus {outline:2px solid #36F;}
 </style>
 
